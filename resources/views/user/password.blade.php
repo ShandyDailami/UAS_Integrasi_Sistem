@@ -29,7 +29,7 @@
             </form>
         </div>
         <div class="col-6 p-0 d-flex justify-content-end">
-            <img class="" style="width: 450px" src="{{ URL('images/aside.png') }}" alt="">
+            <img class="" style="width: 100%" src="{{ URL('images/aside.png') }}" alt="">
         </div>
     </div>
 @endsection
