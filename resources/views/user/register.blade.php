@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <div class="row m-0 align-items-center">
+    <div class="row m-0 align-items-center justify-content-end">
         <div class="col-5">
             <h1 class="text-center">Sign Up</h1>
             @if ($errors->any())
@@ -53,7 +53,7 @@
             </form>
         </div>
         <div class="col-6 p-0 d-flex justify-content-end">
-            <img class="" style="width: 100%" src="{{ URL('images/aside.png') }}" alt="">
+            <img class="" style="width: 75%" src="{{ URL('images/aside.png') }}" alt="">
         </div>
     </div>
 @endsection

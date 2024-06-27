@@ -20,7 +20,6 @@ return new class extends Migration {
             $table->string('phone');
             $table->string('address');
             $table->string('image')->nullable();
-            $table->string('google_id')->unique();
             $table->rememberToken();
             $table->timestamps();
         });
