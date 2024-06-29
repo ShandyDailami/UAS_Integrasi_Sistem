@@ -11,9 +11,10 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->paginate(10);
+        $products = Product::all();
+        $data['title'] = 'Home';
 
-        return view('home', compact('products'));
+        return view('home', compact('products'), $data);
     }
 
     public function showData()
@@ -22,6 +23,13 @@ class ProductController extends Controller
         $categories = Category::all();
 
         return view('admin/dashboard', compact('products', 'categories'));
+    }
+    public function detail($id)
+    {
+        $data['title'] = 'Detail';
+        $product = Product::find($id);
+
+        return view('detail', compact('product'), $data);
     }
 
     public function create()
@@ -86,7 +94,6 @@ class ProductController extends Controller
             $image->storeAs('public/images', $imageName);
             $imagePath = 'storage/images/' . $imageName;
 
-            // Hapus gambar lama jika ada dan simpan gambar baru
             if (Storage::exists($product->image)) {
                 Storage::delete($product->image);
             }

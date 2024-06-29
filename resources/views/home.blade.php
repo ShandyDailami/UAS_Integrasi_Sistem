@@ -76,15 +76,16 @@
                 <div class="row row-cols-1 row-cols-md-5 g-4 p-2">
                     @foreach ($products as $product)
                         <div class="col">
-                            <div class="card" style="transition: .3s">
-                                <img style="width: 170px; height: 172px" src="{{ asset($product->image) }}"
-                                    class="card-img-top" alt="...">
+                            <a style="text-decoration: none" href="{{ route('detail', ['id' => $product->product_id]) }}"
+                                class="card" style="transition: .3s">
+                                <img style="width: 100%; height: 172px" src="{{ asset($product->image) }}"
+                                    class="card-img-top text-center" alt="...">
                                 <div class="card-body">
-                                    <h5 style="font-size: 16px" class="card-title">{{ $product->name }}</h5>
+                                    <h5 style="font-size: 16px" class="card-title text-black">{{ $product->name }}</h5>
                                     <p style="color: #ED9455" class="card-text">Rp
                                         {{ number_format($product->price, 0, ',', '.') }}</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>

@@ -9,6 +9,7 @@
                 @endforeach
             @endif
             <form action="{{ route('register.action') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <a href="{{ route('redirect') }}" class="my-3 py-2 btn btn-outline-dark w-100">
                     <img style="width: 20px" src="{{ URL('images/google icon.png') }}" alt="">
                     Log in with Google
@@ -18,7 +19,6 @@
                     <p class="pt-1 mx-4 text-sm-center font-weight-bold text-secondary">OR SIGN UP WITH EMAIL</p>
                     <hr class="w-25">
                 </div>
-                @csrf
                 <div class="mb-3">
                     <input class="form-control" type="text" name="name" value="{{ old('name') }}"
                         placeholder="Name" />

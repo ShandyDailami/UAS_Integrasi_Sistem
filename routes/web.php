@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\UserController;
@@ -21,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('home', ['title' => 'Home']);
 // })->name('home');
 
+Route::get('/', [UserController::class, 'login'])->name('login');
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register', [UserController::class, 'register_action'])->name('register.action');
-Route::get('login', [UserController::class, 'login'])->name('login');
 Route::post('login', [UserController::class, 'login_action'])->name('login.action');
 Route::get('password', [UserController::class, 'password'])->name('password');
 Route::post('password', [UserController::class, 'password_action'])->name('password.action');
@@ -42,10 +43,13 @@ Route::post('logout', [SocialiteController::class, 'logout'])
     ->middleware(['auth'])
     ->name('logout');
 
-Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('admin/dashboard', [ProductController::class, 'showData'])->name('admin.dashboard');
 Route::get('admin/create', [ProductController::class, 'create'])->name('admin/create');
 Route::post('store', [ProductController::class, 'store'])->name('admin/store');
 Route::get('edit', [ProductController::class, 'edit'])->name('admin/edit');
 Route::patch('update', [ProductController::class, 'update'])->name('admin/update');
 Route::delete('destroy', [ProductController::class, 'destroy'])->name('admin.delete');
+Route::get('home', [ProductController::class, 'index'])->name('home');
+Route::get('detail/{id}', [ProductController::class, 'detail'])->name('detail');
+Route::get('payment/{id}', [PaymentController::class, 'index'])->name('payment');
+Route::post('payment/pay', [PaymentController::class, 'pay'])->name('payment.pay')->middleware('web');
